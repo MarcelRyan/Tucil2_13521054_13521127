@@ -25,13 +25,13 @@ def minDistanceBruteForce(array, dimensi):
     min = array_distance[0][0]
     point1= 0
     point2 = 0
-    print(array_distance)
     for i in range(len(array_distance)):
         for j in range(len(array_distance[i])):
             if (min > array_distance[i][j]):
                 min = array_distance[i][j]
                 point1 = i
                 point2 = j+i+1
+    print(f"Titik terdekat adalah titik {point1} dan titik {point2} dengan jarak sebesar {min}")
     return point1, point2
 
 
