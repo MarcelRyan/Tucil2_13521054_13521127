@@ -12,10 +12,11 @@ point1, point2 = closestPoint.minDistanceBruteForce(array_of_points, dimensi)
 start = time.time()
 mindnc, arraydnc  = closestPoint.divideAndConquer(array_of_points, dimensi)
 end = time.time()
-idx1, idx2 = closestPoint.indexDNC(arraydnc, array_of_points)
-print(f"Titik terdekat dengan algoritma divide and conquer {idx1} dan titik {idx2} dengan jarak sebesar {mindnc}")
+idx1, idx2 = closestPoint.indexPoint(arraydnc, array_of_points)
+print(f"Titik terdekat dengan algoritma divide and conquer {idx1+1} dan titik {idx2+1} dengan jarak sebesar {mindnc}")
 print(f"waktu yang dibutuhkan algoritma divide and conquer adalah {end-start}")
 closestPoint.jumlahEucDNC()
+print("Apabila terdapat perbedaan titik, namun jarak euclidean sama hal ini mungkin terjadi apabila ada 2 pasangan titik yang memiliki jarak euclidean yang sama")
 # print(f"Jumlah operasi euclidean distance algoritma divide and conquer adalah {count}")
 
 if (dimensi == 3):
