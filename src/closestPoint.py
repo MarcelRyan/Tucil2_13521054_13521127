@@ -8,27 +8,31 @@ def inputUser():
     for i in range(n):
         points = []
         for j in range(dimensi):
-            points.append(random.randint(0, 10))
+            points.append(random.uniform(0, 10))
         array.append(points)
     return array, dimensi
 
 def minDistanceBruteForce(array, dimensi):
     array_distance = []
-    for i in range(0, len(array), 2):
-        jarak = 0
-        for j in range(dimensi):
-            jarak += (array[i+1][j] - array[i][j]) **2
-        print(math.sqrt(jarak))
-        array_distance.append(math.sqrt(jarak))
-    
-    min = array_distance[0]
-    idx_min = 0
+    for i in range(len(array)):
+        temp = []
+        for j in range(i+1, len(array)):
+            jarak = 0
+            for k in range(dimensi):
+                jarak += (array[j][k] - array[i][k]) ** 2
+            temp.append(math.sqrt(jarak))
+        array_distance.append(temp)
+    min = array_distance[0][0]
+    point1= 0
+    point2 = 0
+    print(array_distance)
     for i in range(len(array_distance)):
-        if (min > array_distance[i]):
-            min = array_distance[i]
-            idx_min = i
-            print(idx_min)
-    return idx_min
+        for j in range(len(array_distance[i])):
+            if (min > array_distance[i][j]):
+                min = array_distance[i][j]
+                point1 = i
+                point2 = j+i+1
+    return point1, point2
 
 
 
