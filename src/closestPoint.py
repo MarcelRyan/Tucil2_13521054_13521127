@@ -70,8 +70,8 @@ def minDistanceBruteForce(array, dimensi):
                 point1 = i
                 point2 = i+j+1
     end = time.time()
-    print(f"Titik terdekat dengan algoritma bruteforce adalah titik {point1+2} dan titik {point2+1} dengan jarak sebesar {min}")
-    print(f"Waktu yang diperlukan untuk algoritma bruteforce adalah {end-start}")
+    print(f"Titik terdekat dengan algoritma bruteforce adalah titik dengan koordinat x :{array[point1][0]:.3f}, y :{array[point1][1]:.3f}, z :{array[point1][2]:.3f} dan titik dengan koordinat x :{array[point2][0]:.3f}, y :{array[point2][1]:.3f}, z :{array[point2][2]:.3f} dengan jarak sebesar {min:.3f}")
+    print(f"Waktu yang diperlukan untuk algoritma bruteforce adalah {end-start:.3f}")
     print(f"Jumlah operasi euclidean distance algoritma brute force adalah {count}")
     return point1+1, point2+1
 count = 0
