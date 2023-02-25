@@ -15,7 +15,6 @@ def inputUser():
             points.append(random.uniform(0, 100))
         array.append(points)
     # Mengurutkan array dari x axis menaik
-    quickSort(array, 0, len(array)-1)
     return array, dimensi
 
 def partition(array, low, high):
@@ -34,6 +33,8 @@ def partition(array, low, high):
                 break
         if (i < j):
             (array[i], array[j]) = (array[j], array[i])
+            i += 1
+            j -= 1
     (array[i], array[high]) = (array[high], array[i])
  
     # Mengembalikan indeks dilakukannya partisi
@@ -47,6 +48,7 @@ def quickSort(array, low, high):
 
 
 def minDistanceBruteForce(array, dimensi):
+    quickSort(array, 0, len(array)-1)
     count = 0
     start = time.time()
     array_distance = []
