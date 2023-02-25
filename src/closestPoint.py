@@ -22,8 +22,7 @@ def partition(array, low, high):
     # Quicksort dengan pivot elemen paling kanan
     i = low
     j = high-1
-    idxpivot = high//2
-    pivot = array[idxpivot][0]
+    pivot = array[high][0]
     while (i <= j):
         while (array[i][0] < pivot):
             i += 1
