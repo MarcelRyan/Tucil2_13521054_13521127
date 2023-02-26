@@ -12,7 +12,8 @@ def inputUser():
     for i in range(n):
         points = []
         for j in range(dimensi):
-            points.append(random.uniform(0, 100))
+            randomvalue = random.randint(0, 100)
+            points.append(randomvalue)
         array.append(points)
     # Mengurutkan array dari x axis menaik
     return array, dimensi
@@ -48,11 +49,10 @@ def quickSort(array, low, high):
 
 
 def minDistanceBruteForce(array, dimensi):
-    quickSort(array, 0, len(array)-1)
     count = 0
     start = time.time()
+    quickSort(array, 0, len(array)-1)
     array_distance = []
-    arraypoint = []
     for i in range(len(array)):
         temp = []
         for j in range(i+1, len(array)):
@@ -73,7 +73,7 @@ def minDistanceBruteForce(array, dimensi):
                 point2 = i+j+1
     end = time.time()
     print(f"Titik terdekat dengan algoritma bruteforce adalah titik dengan koordinat x :{array[point1][0]:.3f}, y :{array[point1][1]:.3f}, z :{array[point1][2]:.3f} dan titik dengan koordinat x :{array[point2][0]:.3f}, y :{array[point2][1]:.3f}, z :{array[point2][2]:.3f} dengan jarak sebesar {min:.3f}")
-    print(f"Waktu yang diperlukan untuk algoritma bruteforce adalah {end-start:.3f}")
+    print(f"Waktu yang diperlukan untuk algoritma bruteforce adalah {(end-start) * 1000:.3f} ms")
     print(f"Jumlah operasi euclidean distance algoritma brute force adalah {count}")
     return point1+1, point2+1
 count = 0
@@ -84,6 +84,16 @@ def distance(point1, point2, dimensi):
         jarak += (point2[i] - point1[i]) ** 2
     count += 1
     return math.sqrt(jarak)
+
+def needToCheck(point1, point2, minimum, dimensi):
+    proses = True
+    jarak = 0
+    for i in range(dimensi):
+        jarak += (point2[i] - point1[i]) ** 2
+        if (jarak > minimum**2):
+            proses = False
+            break
+    return proses
 
 def divideAndConquer(points, dimensi):
     # Mengurutkan array dari x axis menaik
@@ -131,16 +141,15 @@ def divideAndConquer(points, dimensi):
         for i in range(len(points)):
             if (abs(points[i][0] - points[mid][0]) <= min):
                 midPoint.append(points[i])
-
         # Mengurutkan titik berdasarkan y menurun
-        for i in range(len(midPoint)):
-            min_idx = i
-            for j in range(min_idx+1, len(midPoint)):
-                if (points[min_idx][1] < points[j][1]):
-                    min_idx = j
-            temp = points[min_idx]
-            points[min_idx] = points[i]
-            points[i] = temp
+        # for i in range(len(midPoint)):
+        #     min_idx = i
+        #     for j in range(min_idx+1, len(midPoint)):
+        #         if (points[min_idx][1] < points[j][1]):
+        #             min_idx = j
+        #     temp = points[min_idx]
+        #     points[min_idx] = points[i]
+        #     points[i] = temp
 
         # Mencari pasangan titik yang nilai distancenya lebih kecil dari minLeft atau minRight jika ada
         for i in range(len(midPoint)):
@@ -150,11 +159,18 @@ def divideAndConquer(points, dimensi):
                     if (abs(midPoint[i][k] - midPoint[j][k]) > min):
                         proses = False
                         break
-                if (proses):
-                    minMid = distance(midPoint[i], midPoint[j], dimensi)
-                    if (minMid < min):
-                        min = minMid
-                        array = [midPoint[i], midPoint[j]]
+                if (dimensi >= 5 and len(points) >= 100):
+                    if (proses and needToCheck(midPoint[i], midPoint[j], min, dimensi)):
+                        minMid = distance(midPoint[i], midPoint[j], dimensi)
+                        if (minMid < min):
+                            min = minMid
+                            array = [midPoint[i], midPoint[j]]
+                else:
+                    if (proses):
+                        minMid = distance(midPoint[i], midPoint[j], dimensi)
+                        if (minMid < min):
+                            min = minMid
+                            array = [midPoint[i], midPoint[j]]
         return min, array
 
 def jumlahEucDNC():
