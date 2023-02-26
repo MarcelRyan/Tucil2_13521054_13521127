@@ -12,7 +12,7 @@ def inputUser():
     for i in range(n):
         points = []
         for j in range(dimensi):
-            randomvalue = random.randint(0, 100)
+            randomvalue = random.uniform(0, 100)
             points.append(randomvalue)
         array.append(points)
     # Mengurutkan array dari x axis menaik
