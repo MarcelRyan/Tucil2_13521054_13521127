@@ -1,0 +1,9 @@
+Masukkan berapa titik yang ingin di generate: 128
+Ingin berapa dimensi: 3
+Titik terdekat dengan algoritma bruteforce adalah titik dengan koordinat x :95.823, y :48.044, z :8.506 dan titik dengan koordinat x :97.059, y :46.864, z :9.170 dengan jarak sebesar 1.833
+Waktu yang diperlukan untuk algoritma bruteforce adalah 6.999 ms
+Jumlah operasi euclidean distance algoritma brute force adalah 8128
+Titik terdekat dengan algoritma divide and conque adalah titik dengan koordinat x :95.823, y :48.044, z :8.506 dan titik dengan koordinat x :97.059, y :46.864, z :9.170 dengan jarak sebesar 1.833
+waktu yang dibutuhkan algoritma divide and conquer adalah 2.007 ms
+Jumlah operasi euclidean untuk algoritma divide and conquer adalah 161
+Apabila terdapat perbedaan titik, namun jarak euclidean sama hal ini mungkin terjadi apabila ada 2 pasangan titik yang memiliki jarak euclidean yang sama
