@@ -6,6 +6,7 @@ import os
 os.system('cls')
 fig = plt.figure(figsize=(10,10))
 ax = fig.add_subplot(111, projection='3d')
+print("Selamat datang di program mencari pasangan titik terdekat pada dimensi ke-n !")
 print("Input Process")
 print(
     """

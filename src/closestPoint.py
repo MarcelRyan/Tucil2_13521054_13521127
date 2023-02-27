@@ -5,7 +5,6 @@ import time
 sys.setrecursionlimit(10000)
 
 def inputUser(choice):
-    print("Selamat datang di program mencari pasangan titik terdekat pada dimensi ke-n !")
     n = int(input("Masukkan berapa titik yang ingin di generate: "))
     dimensi = int(input("Ingin berapa dimensi: "))
     array = []
@@ -21,7 +20,6 @@ def inputUser(choice):
     elif(choice == 2):
         print("Every component x,y,z seperated by comma")
         for i in range(n):
-            print("point{} : ".format(i+1), end="")
             inputStr = input("Input point {}: ".format(i+1))
             inputStrList = inputStr.split(",")
             points = [int(x) for x in inputStrList]
