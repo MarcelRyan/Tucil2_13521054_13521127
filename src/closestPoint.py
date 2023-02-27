@@ -2,6 +2,7 @@ import random
 import math
 import numpy as np
 import sys
+import time
 sys.setrecursionlimit(10000)
 import time
 
@@ -9,10 +10,10 @@ def inputUser():
     n = int(input("Masukkan berapa titik yang ingin di generate: "))
     dimensi = int(input("Ingin berapa dimensi: "))
     array = []
+    # Making random always different every time it runs
+    random.seed(time.time())
     for i in range(n):
         points = []
-        # Make every random number different
-        random.seed(i)
         for j in range(dimensi):
             randomvalue = random.uniform(0, 100)
             points.append(randomvalue)
@@ -67,7 +68,7 @@ def quickSort(array):
 def minDistanceBruteForce(array, dimensi):
     count = 0
     start = time.time()
-    quickSort(array, 0, len(array)-1)
+    quickSort(array)
     array_distance = []
     for i in range(len(array)):
         temp = []
@@ -113,7 +114,7 @@ def needToCheck(point1, point2, minimum, dimensi):
 
 def divideAndConquer(points, dimensi):
     # Mengurutkan array dari x axis menaik
-    quickSort(points, 0, len(points)-1)
+    quickSort(points)
     array = []
     if (len(points) == 2):
         array = points
