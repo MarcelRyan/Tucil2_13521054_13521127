@@ -2,6 +2,7 @@ import random
 import math
 import numpy as np
 import sys
+import time
 sys.setrecursionlimit(10000)
 import time
 
@@ -9,6 +10,8 @@ def inputUser():
     n = int(input("Masukkan berapa titik yang ingin di generate: "))
     dimensi = int(input("Ingin berapa dimensi: "))
     array = []
+    # Making random always different every time it runs
+    random.seed(time.time())
     for i in range(n):
         points = []
         for j in range(dimensi):
@@ -18,40 +21,54 @@ def inputUser():
     # Mengurutkan array dari x axis menaik
     return array, dimensi
 
-def partition(array, low, high):
-    # Quicksort dengan pivot elemen paling kanan
-    i = low
-    j = high-1
-    pivot = array[high][0]
-    while (i <= j):
-        while (array[i][0] < pivot):
-            i += 1
-            if (i >= high):
-                break 
-        while (array[j][0] >= pivot):
-            j -= 1
-            if (j <= low):
-                break
-        if (i < j):
-            (array[i], array[j]) = (array[j], array[i])
-            i += 1
-            j -= 1
-    (array[i], array[high]) = (array[high], array[i])
+# def partition(array, low, high):
+#     # Quicksort dengan pivot elemen paling kanan
+#     i = low
+#     j = high-1
+#     pivot = array[high][0]
+#     while (i <= j):
+#         while (array[i][0] < pivot):
+#             i += 1
+#             if (i >= high):
+#                 break 
+#         while (array[j][0] >= pivot):
+#             j -= 1
+#             if (j <= low):
+#                 break
+#         if (i < j):
+#             (array[i], array[j]) = (array[j], array[i])
+#             i += 1
+#             j -= 1
+#     (array[i], array[high]) = (array[high], array[i])
  
-    # Mengembalikan indeks dilakukannya partisi
-    return i
+#     # Mengembalikan indeks dilakukannya partisi
+#     return i
  
-def quickSort(array, low, high):
-    if low < high:
-        pi = partition(array, low, high)
-        quickSort(array, low, pi - 1)
-        quickSort(array, pi + 1, high)
+# def quickSort(array, low, high):
+#     if low < high:
+#         pi = partition(array, low, high)
+#         quickSort(array, low, pi - 1)
+#         quickSort(array, pi + 1, high)
+
+def quickSort(array):
+    if(len(array) <= 1):
+        return array
+    else:
+        pivot = array[0];
+        left= []
+        right= []
+        for i in range (1, len(array)):
+            if(array[i] < pivot):
+                left.append(array[i])
+            else:
+                right.append(array[i])
+        return quickSort(left)+[pivot]+quickSort(right)
 
 
 def minDistanceBruteForce(array, dimensi):
     count = 0
     start = time.time()
-    quickSort(array, 0, len(array)-1)
+    quickSort(array)
     array_distance = []
     for i in range(len(array)):
         temp = []
@@ -97,7 +114,7 @@ def needToCheck(point1, point2, minimum, dimensi):
 
 def divideAndConquer(points, dimensi):
     # Mengurutkan array dari x axis menaik
-    quickSort(points, 0, len(points)-1)
+    quickSort(points)
     array = []
     if (len(points) == 2):
         array = points
