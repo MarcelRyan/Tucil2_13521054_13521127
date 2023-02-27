@@ -11,6 +11,8 @@ def inputUser():
     array = []
     for i in range(n):
         points = []
+        # Make every random number different
+        random.seed(i)
         for j in range(dimensi):
             randomvalue = random.uniform(0, 100)
             points.append(randomvalue)
