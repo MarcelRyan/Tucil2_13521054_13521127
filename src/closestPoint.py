@@ -22,35 +22,20 @@ def inputUser():
     return array, dimensi
 
 def partition(array, low, high):
-    # Quicksort dengan pivot elemen paling kanan
-    i = low
-    j = high-1
     pivot = array[high][0]
-    while (i <= j):
-        while (array[i][0] < pivot):
-            i += 1
-            if (i >= high):
-                break 
-        while (array[j][0] >= pivot):
-            j -= 1
-            if (j <= low):
-                break
-        if (i < j):
+    i = low - 1
+    for j in range(low, high):
+        if array[j][0] <= pivot:
+            i = i + 1
             (array[i], array[j]) = (array[j], array[i])
-            i += 1
-            j -= 1
-    (array[i], array[high]) = (array[high], array[i])
- 
-    # Mengembalikan indeks dilakukannya partisi
-    return i
+    (array[i + 1], array[high]) = (array[high], array[i + 1])
+    return i + 1
  
 def quickSort(array, low, high):
     if low < high:
         pi = partition(array, low, high)
         quickSort(array, low, pi - 1)
         quickSort(array, pi + 1, high)
-
-
 
 def minDistanceBruteForce(array, dimensi):
     count = 0
@@ -79,6 +64,8 @@ def minDistanceBruteForce(array, dimensi):
     print(f"Waktu yang diperlukan untuk algoritma bruteforce adalah {(end-start) * 1000:.3f} ms")
     print(f"Jumlah operasi euclidean distance algoritma brute force adalah {count}")
     return point1+1, point2+1
+
+# Variabel untuk menghitung operasi euclidean distance
 count = 0
 def distance(point1, point2, dimensi):
     global count
@@ -88,6 +75,8 @@ def distance(point1, point2, dimensi):
     count += 1
     return math.sqrt(jarak)
 
+
+# Function to check whether point1 and point2 needs to be checked further
 def needToCheck(point1, point2, minimum, dimensi):
     proses = True
     jarak = 0
@@ -100,7 +89,7 @@ def needToCheck(point1, point2, minimum, dimensi):
 
 def divideAndConquer(points, dimensi):
     # Mengurutkan array dari x axis menaik
-    quickSort(points, 0, len(points)-1)
+    quickSort(points, 0, len(points) - 1)
     array = []
     if (len(points) == 2):
         array = points
@@ -145,24 +134,9 @@ def divideAndConquer(points, dimensi):
             if (abs(points[i][0] - points[mid][0]) <= min):
                 midPoint.append(points[i])
 
-        # Mengurutkan titik berdasarkan y menurun
-        # for i in range(len(midPoint)):
-        #     min_idx = i
-        #     for j in range(min_idx+1, len(midPoint)):
-        #         if (points[min_idx][1] < points[j][1]):
-        #             min_idx = j
-        #     temp = points[min_idx]
-        #     points[min_idx] = points[i]
-        #     points[i] = temp
-
         # Mencari pasangan titik yang nilai distancenya lebih kecil dari minLeft atau minRight jika ada
         for i in range(len(midPoint)):
             for j in range(i+1, len(midPoint)):
-                proses = True
-                for k in range(dimensi):
-                    if (abs(midPoint[i][k] - midPoint[j][k]) > min):
-                        proses = False
-                        break
                 if (dimensi > 3):
                     if (needToCheck(midPoint[i], midPoint[j], min, dimensi)):
                         minMid = distance(midPoint[i], midPoint[j], dimensi)
@@ -185,8 +159,9 @@ def divideAndConquer(points, dimensi):
 def jumlahEucDNC():
     print("Jumlah operasi euclidean untuk algoritma divide and conquer adalah", count+1)
 
-def indexPoint(array, points):
 
+# Searching index of the point in array of points
+def indexPoint(array, points):
     for i in range(len(points)):
         if (points[i] == array[0]):
             idx1 = i
