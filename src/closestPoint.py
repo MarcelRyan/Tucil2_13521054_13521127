@@ -148,13 +148,18 @@ def divideAndConquer(points, dimensi):
                     if (abs(midPoint[i][k] - midPoint[j][k]) > min):
                         proses = False
                         break
-                if (dimensi >= 5):
-                    if (proses and needToCheck(midPoint[i], midPoint[j], min, dimensi)):
+                if (dimensi > 3):
+                    if (needToCheck(midPoint[i], midPoint[j], min, dimensi)):
                         minMid = distance(midPoint[i], midPoint[j], dimensi)
                         if (minMid < min):
                             min = minMid
                             array = [midPoint[i], midPoint[j]]
                 else:
+                    proses = True
+                    for k in range(dimensi):
+                        if (abs(midPoint[i][k] - midPoint[j][k]) > min):
+                            proses = False
+                            break
                     if (proses):
                         minMid = distance(midPoint[i], midPoint[j], dimensi)
                         if (minMid < min):
