@@ -7,6 +7,7 @@ sys.setrecursionlimit(10000)
 import time
 
 def inputUser():
+    print("Selamat datang di program mencari pasangan titik terdekat pada dimensi ke-n !")
     n = int(input("Masukkan berapa titik yang ingin di generate: "))
     dimensi = int(input("Ingin berapa dimensi: "))
     array = []
