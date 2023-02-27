@@ -1,10 +1,8 @@
 import random
 import math
-import numpy as np
 import sys
 import time
 sys.setrecursionlimit(10000)
-import time
 
 def inputUser():
     print("Selamat datang di program mencari pasangan titik terdekat pada dimensi ke-n !")
