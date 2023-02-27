@@ -6,18 +6,28 @@ import time
 sys.setrecursionlimit(10000)
 import time
 
-def inputUser():
+def inputUser(choice):
     n = int(input("Masukkan berapa titik yang ingin di generate: "))
     dimensi = int(input("Ingin berapa dimensi: "))
     array = []
-    # Making random always different every time it runs
-    random.seed(time.time())
-    for i in range(n):
-        points = []
-        for j in range(dimensi):
-            randomvalue = random.uniform(0, 100)
-            points.append(randomvalue)
-        array.append(points)
+    if(choice == 1):
+            # Making random always different every time it runs
+        random.seed(time.time())
+        for i in range(n):
+            points = []
+            for j in range(dimensi):
+                randomvalue = random.uniform(0, 100)
+                points.append(randomvalue)
+            array.append(points)
+    elif(choice == 2):
+        print("Every component x,y,z seperated by comma")
+        for i in range(n):
+            print("point{} : ".format(i+1), end="")
+            inputStr = input("Input point {}: ".format(i+1))
+            inputStrList = inputStr.split(",")
+            points = [int(x) for x in inputStrList]
+            array.append(points)
+    
     # Mengurutkan array dari x axis menaik
     return array, dimensi
 

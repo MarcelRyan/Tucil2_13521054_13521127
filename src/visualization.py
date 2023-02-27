@@ -9,7 +9,17 @@ import os
 os.system('cls')
 fig = plt.figure(figsize=(10,10))
 ax = fig.add_subplot(111, projection='3d')
-array_of_points, dimensi = closestPoint.inputUser()
+print("Input Process")
+print(
+    """
+There is 2 ways to input
+1. Random
+2. Manual 
+Please include the number and it is not validated so recheck before you press enter!
+    """
+)
+inputChoice = int(input("How do you wanna input : "))
+array_of_points, dimensi = closestPoint.inputUser(inputChoice)
 point1, point2 = closestPoint.minDistanceBruteForce(array_of_points, dimensi)
 start = time.time()
 mindnc, arraydnc  = closestPoint.divideAndConquer(array_of_points, dimensi)
