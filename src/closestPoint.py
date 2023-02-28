@@ -71,14 +71,22 @@ def minDistanceBruteForce(array, dimensi):
                 point1 = i
                 point2 = i+j+1
     end = time.time()
-    if (dimensi >= 3):
-        print(f"Titik terdekat dengan algoritma bruteforce adalah titik dengan koordinat x :{array[point1][0]:.3f}, y :{array[point1][1]:.3f}, z :{array[point1][2]:.3f} dan titik dengan koordinat x :{array[point2][0]:.3f}, y :{array[point2][1]:.3f}, z :{array[point2][2]:.3f} dengan jarak sebesar {min:.3f}")
-    elif (dimensi == 2):
-        print(f"Titik terdekat dengan algoritma bruteforce adalah titik dengan koordinat x :{array[point1][0]:.3f}, y :{array[point1][1]:.3f} dan titik dengan koordinat x :{array[point2][0]:.3f}, y :{array[point2][1]:.3f} dengan jarak sebesar {min:.3f}")
-    elif (dimensi == 1):
-        print(f"Titik terdekat dengan algoritma bruteforce adalah titik dengan koordinat x :{array[point1][0]:.3f} dan titik dengan koordinat x :{array[point2][0]:.3f} dengan jarak sebesar {min:.3f}")
-    print(f"Waktu yang diperlukan untuk algoritma bruteforce adalah {(end-start) * 1000:.3f} ms")
-    print(f"Jumlah operasi euclidean distance algoritma brute force adalah {count}")
+    print("Dengan menggunakan algoritma brute force didapat hasil sebagai berikut :")
+    print("Titik 1 : (", end='')
+    for i in range(dimensi):
+        if (i == dimensi - 1):
+            print(f"{array[point1][i]:.3f})")
+        else:
+            print(f"{array[point1][i]:.3f}, ", end= '')
+    print("Titik 2 : (", end='')
+    for i in range(dimensi):
+        if (i == dimensi - 1):
+            print(f"{array[point2][i]:.3f})")
+        else:
+            print(f"{array[point2][i]:.3f}, ", end= '')
+    print(f"Waktu : {(end-start) * 1000:.3f} ms")
+    print(f"Jumlah operasi euclidean distance untuk algoritma brute force : {count}")
+    print(f"Jarak antar titik : {min:.3f}")
     return point1+1, point2+1
 
 # Variabel untuk menghitung operasi euclidean distance
@@ -173,7 +181,7 @@ def divideAndConquer(points, dimensi):
         return min, array
 
 def jumlahEucDNC():
-    print("Jumlah operasi euclidean untuk algoritma divide and conquer adalah", count+1)
+    print("Jumlah operasi euclidean distance untuk algoritma divide and conquer :", count)
 
 
 # Searching index of the point in array of points
