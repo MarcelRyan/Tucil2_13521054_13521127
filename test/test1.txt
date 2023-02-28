@@ -1,4 +1,3 @@
-n = 16
 Masukkan berapa titik yang ingin di generate: 16
 Ingin berapa dimensi: 3
 Titik terdekat dengan algoritma bruteforce adalah titik dengan koordinat x :9.550, y :0.171, z :22.355 dan titik dengan koordinat x :9.244, y :2.013, z :8.706 dengan jarak sebesar 13.777
