@@ -7,6 +7,10 @@ sys.setrecursionlimit(10000)
 def inputUser(choice):
     n = int(input("Masukkan berapa titik yang ingin di generate: "))
     dimensi = int(input("Ingin berapa dimensi: "))
+    while (n <= 0 or dimensi <= 0):
+        print("Input tidak valid!, Silahkan input jumlah titik dan dimensi dengan nilai diatas 0!")
+        n = int(input("Masukkan berapa titik yang ingin di generate: "))
+        dimensi = int(input("Ingin berapa dimensi: "))
     array = []
     if(choice == 1):
             # Making random always different every time it runs
@@ -67,7 +71,12 @@ def minDistanceBruteForce(array, dimensi):
                 point1 = i
                 point2 = i+j+1
     end = time.time()
-    print(f"Titik terdekat dengan algoritma bruteforce adalah titik dengan koordinat x :{array[point1][0]:.3f}, y :{array[point1][1]:.3f}, z :{array[point1][2]:.3f} dan titik dengan koordinat x :{array[point2][0]:.3f}, y :{array[point2][1]:.3f}, z :{array[point2][2]:.3f} dengan jarak sebesar {min:.3f}")
+    if (dimensi >= 3):
+        print(f"Titik terdekat dengan algoritma bruteforce adalah titik dengan koordinat x :{array[point1][0]:.3f}, y :{array[point1][1]:.3f}, z :{array[point1][2]:.3f} dan titik dengan koordinat x :{array[point2][0]:.3f}, y :{array[point2][1]:.3f}, z :{array[point2][2]:.3f} dengan jarak sebesar {min:.3f}")
+    elif (dimensi == 2):
+        print(f"Titik terdekat dengan algoritma bruteforce adalah titik dengan koordinat x :{array[point1][0]:.3f}, y :{array[point1][1]:.3f} dan titik dengan koordinat x :{array[point2][0]:.3f}, y :{array[point2][1]:.3f} dengan jarak sebesar {min:.3f}")
+    elif (dimensi == 1):
+        print(f"Titik terdekat dengan algoritma bruteforce adalah titik dengan koordinat x :{array[point1][0]:.3f} dan titik dengan koordinat x :{array[point2][0]:.3f} dengan jarak sebesar {min:.3f}")
     print(f"Waktu yang diperlukan untuk algoritma bruteforce adalah {(end-start) * 1000:.3f} ms")
     print(f"Jumlah operasi euclidean distance algoritma brute force adalah {count}")
     return point1+1, point2+1
