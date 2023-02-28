@@ -12,7 +12,12 @@ start = time.time()
 mindnc, arraydnc  = closestPoint.divideAndConquer(array_of_points, dimensi)
 end = time.time()
 idx1, idx2 = closestPoint.indexPoint(arraydnc, array_of_points)
-print(f"Titik terdekat dengan algoritma divide and conque adalah titik dengan koordinat x :{array_of_points[idx1][0]:.3f}, y :{array_of_points[idx1][1]:.3f}, z :{array_of_points[idx1][2]:.3f} dan titik dengan koordinat x :{array_of_points[idx2][0]:.3f}, y :{array_of_points[idx2][1]:.3f}, z :{array_of_points[idx2][2]:.3f} dengan jarak sebesar {mindnc:.3f}")
+if (dimensi >= 3):
+    print(f"Titik terdekat dengan algoritma divide and conque adalah titik dengan koordinat x :{array_of_points[idx1][0]:.3f}, y :{array_of_points[idx1][1]:.3f}, z :{array_of_points[idx1][2]:.3f} dan titik dengan koordinat x :{array_of_points[idx2][0]:.3f}, y :{array_of_points[idx2][1]:.3f}, z :{array_of_points[idx2][2]:.3f} dengan jarak sebesar {mindnc:.3f}")
+elif (dimensi == 2):
+    print(f"Titik terdekat dengan algoritma divide and conque adalah titik dengan koordinat x :{array_of_points[idx1][0]:.3f}, y :{array_of_points[idx1][1]:.3f} dengan jarak sebesar {mindnc:.3f}")
+elif (dimensi == 1):
+    print(f"Titik terdekat dengan algoritma divide and conque adalah titik dengan koordinat x :{array_of_points[idx1][0]:.3f} dengan jarak sebesar {mindnc:.3f}")
 print(f"waktu yang dibutuhkan algoritma divide and conquer adalah {(end-start) * 1000:.3f} ms")
 closestPoint.jumlahEucDNC()
 print("Apabila terdapat perbedaan titik, namun jarak euclidean sama hal ini mungkin terjadi apabila ada 2 pasangan titik yang memiliki jarak euclidean yang sama")
